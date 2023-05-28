@@ -1,0 +1,96 @@
+<div class="container">
+  <div class="container">
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="name">Name</label>
+          <input class="form-control" placeholder="Name" [(ngModel)]="inpName" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="selectGender">
+          <label for="genderCheck">Gender</label>&nbsp;
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male"
+              [(ngModel)]="gender">
+            <label class="form-check-label" for="inlineRadio1">Male</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female"
+              [(ngModel)]="gender">
+            <label class="form-check-label" for="inlineRadio2">Female</label>
+          </div>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputEmail">Email</label>
+          <input [(ngModel)]="email" type="text" class="form-control" id="inputEmail" placeholder="Email"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="inputMobile">Mobile</label>
+          <input [(ngModel)]="mobile" type="text" class="form-control" id="inputMobile" placeholder="Mobile">
+        </div>
+        <div class="form-group">
+          <label class="my-1 mr-2" for="Category">Category</label> &nbsp;
+          <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" [(ngModel)]="category"
+            [ngModelOptions]="{standalone: true}">
+            <option selected>Choose...</option>
+            <option value="General">General</option>
+            <option value="SC/ST">SC/ST</option>
+            <option value="OBC">OBC</option>
+          </select>
+        </div>
+        <div class="selectTechnology">
+          <label for="inputtechnology">Technology</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="flexCheckDefault">
+            <label class="form-check-label" for="flexCheckDefault">C</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">C++</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">Java</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">Python</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="flexCheckChecked">
+            <label class="form-check-label" for="flexCheckChecked">Javascript</label>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <label for="formFile" class="form-label">Default file input example</label>
+          <input [(ngModel)]="fileData" class="form-control" type="file" id="formFile"
+            [ngModelOptions]="{standalone: true}">
+        </div>
+        <br>
+        <ng-template #modalContent let-modal>
+          <div class="modal-header">
+            <h4 class="modal-title" id="modal-basic-title">Preview</h4>
+          </div>
+          <div class="modal-body">
+            <div>Name: {{inpName}}</div>
+            <div>Email: {{email}}</div>
+            <div>Mobile: {{mobile}}</div>
+            <div>Gender: {{gender}}</div>
+            <div>Category: {{category}}</div>
+            <div>Technologies:
+              <ul>
+                <li *ngFor="let tech of checkedTechnologies">{{tech}}</li>
+              </ul>
+            </div>
+            <div>File: {{fileData}}</div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" (click)="modal.dismiss('Cancel click')">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="updateSharedData()">Ok</button>
+          </div>
+        </ng-template>
+        <button class="btn btn-primary" (click)="open(modalContent)">Preview</button>
+      </div>
+    </form>
+  </div>
+</div>
